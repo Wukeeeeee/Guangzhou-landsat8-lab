@@ -1,74 +1,74 @@
-# Guangzhou Landsat 8 Land Cover Classification Lab
+# 广州 Landsat 8 国土类型遥感监督分类实验
 
-This repository is a lightweight archive for a GIS / remote sensing lab project using Landsat 8 imagery of Guangzhou.
+这是一个 GIS / 遥感实训项目归档，主要记录基于 Landsat 8 影像的广州市国土类型监督分类流程。
 
-The work was mainly completed in ENVI. It records the basic processing workflow from image preprocessing to supervised classification. The result is an experimental course-style output, not a production-level land-cover map.
+本实验主要在 ENVI 中完成，内容包括影像预处理、研究区裁剪、ROI 样本选取、监督分类与结果记录。当前成果用于课程实训和个人学习记录，不作为正式生产级土地覆盖制图成果。
 
-## Workflow
+## 实验流程
 
-Completed / recorded steps:
+已完成或已记录的流程包括：
 
-- Opened and checked two Landsat 8 scenes in ENVI
-- Radiometric calibration
-- FLAASH atmospheric correction
-- Panchromatic and multispectral image fusion
-- Seamless mosaic of the two scenes
-- Guangzhou study-area clipping with boundary data
-- ROI sample selection
-- ROI separability check
-- Supervised classification experiments
+- 打开并检查两景 Landsat 8 影像
+- 辐射定标
+- FLAASH 大气校正
+- 多光谱影像与全色影像融合
+- 两景影像无缝镶嵌
+- 利用广州市边界裁剪研究区
+- ROI 样本选取
+- ROI 可分离性检查
+- 监督分类实验
 
-Classification methods used / tested:
+已尝试或记录的分类方法：
 
-- Maximum Likelihood
-- Neural Net
-- Support Vector Machine
+- 最大似然法
+- 神经网络分类
+- 支持向量机分类
 
-Final land-cover classes used in this lab:
+当前实验使用的地类：
 
-- Water
-- Vegetation
-- Cropland
-- Urban land
-- Bare land
+- 水体
+- 植被
+- 耕地
+- 城镇用地
+- 裸地
 
-## Repository Contents
+## 仓库内容
 
-The main Git repository is kept small. Large raster data and compressed source images are not committed directly to Git.
+主仓库只保留轻量文件，大体积遥感影像和 ENVI 输出文件不直接提交到 Git。
 
-Tracked files in the repository:
+当前主仓库文件：
 
-- `README.md` - project overview and data notes
-- `.gitignore` - excludes large ENVI raster files and temporary outputs
+- `README.md`：项目说明与数据说明
+- `.gitignore`：排除大型 ENVI 栅格文件和临时文件
 
-Local working files may include:
+本地工作目录中还可能包含：
 
-- `workflow.md` - process notes
-- `guangzhou_landsat8_report.pdf` - stage report
-- `ScreenShot/` - ENVI operation screenshots
-- `FinalData/` - local ENVI outputs and intermediate files
+- `workflow.md`：实验流程记录
+- `guangzhou_landsat8_report.pdf`：阶段性实验报告
+- `ScreenShot/`：ENVI 操作截图
+- `FinalData/`：本地 ENVI 中间结果和输出文件
 
-These local working files are mainly for personal record keeping and may not all be uploaded to the Git repository.
+这些本地文件主要用于个人归档，不一定全部上传到主仓库。
 
-## Data In Releases
+## Release 数据
 
-Large data files are stored in GitHub Releases instead of the main branch.
+大体积数据文件放在 GitHub Releases 中，不放在 main 分支。
 
-| Release | File | Description |
+| Release | 文件 | 说明 |
 | --- | --- | --- |
-| [Guangzhou_Shp](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Guangzhou_Shp) | `CantonShp.zip` | Guangzhou boundary shapefile used for study-area clipping |
-| [Landsats8_Data_122043](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Landsats8_Data_122043) | `LC81220432021019LGN00.zip` | Original Landsat 8 scene package, path/row 122/043 |
-| [Landsats8_Data_122044](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Landsats8_Data_122044) | `LC81220442021019LGN00.zip` | Original Landsat 8 scene package, path/row 122/044 |
+| [Guangzhou_Shp](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Guangzhou_Shp) | `CantonShp.zip` | 广州市行政边界矢量数据，用于研究区裁剪 |
+| [Landsats8_Data_122043](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Landsats8_Data_122043) | `LC81220432021019LGN00.zip` | Landsat 8 原始影像数据，轨道号 122/043 |
+| [Landsats8_Data_122044](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Landsats8_Data_122044) | `LC81220442021019LGN00.zip` | Landsat 8 原始影像数据，轨道号 122/044 |
 
-Processed ENVI files such as `.dat`, `.hdr`, `.enp`, rule images, and temporary outputs are intentionally excluded from Git because they are too large for normal repository tracking.
+`.dat`、`.hdr`、`.enp`、规则图像和其他 ENVI 中间结果文件体积较大，已通过 `.gitignore` 排除，不直接进入 Git 版本库。
 
-## Notes
+## 说明
 
-This project is best understood as a personal learning archive for a GIS coursework / lab workflow. The classification result still has visible limitations:
+本项目更适合作为 GIS 专业课程实训和个人学习记录。当前分类结果仍有明显局限：
 
-- Guangzhou contains complex urban-rural mixed land cover.
-- Urban land, cropland, and bare land can be spectrally similar in Landsat imagery.
-- Landsat spatial resolution makes detailed urban green space and mixed pixels hard to separate.
-- Some classification results may contain salt-and-pepper noise and need post-processing or accuracy assessment.
+- 广州地区地类复杂，城市、郊区、农田和裸地混合明显。
+- 城镇用地、耕地、裸地在部分区域光谱特征相近，容易发生混分。
+- Landsat 影像空间分辨率有限，难以精细区分城市绿地、林地和小尺度地物。
+- 部分分类结果可能存在椒盐噪声，需要进一步后处理和精度评价。
 
-Future improvements could include refined ROI samples, post-classification filtering, confusion matrix accuracy assessment, and comparison between classifiers.
+后续可继续补充 ROI 优化、分类后滤波、混淆矩阵精度评价，以及不同分类器结果对比分析。
