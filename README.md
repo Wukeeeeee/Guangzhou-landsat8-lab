@@ -1,26 +1,30 @@
 # Guangzhou Landsat 8 Land Cover Classification Lab
 
-This repository is a personal GIS / remote sensing lab archive for a Guangzhou Landsat 8 land-cover classification experiment.
+This repository is a lightweight archive for a GIS / remote sensing lab project using Landsat 8 imagery of Guangzhou.
 
-The project is mainly used to record my ENVI workflow and store related data packages. The classification results are experimental and are not intended as a production-level land-cover map.
+The work was mainly completed in ENVI. It records the basic processing workflow from image preprocessing to supervised classification. The result is an experimental course-style output, not a production-level land-cover map.
 
-## Project Status
+## Workflow
 
-Current progress:
+Completed / recorded steps:
 
-- Landsat 8 images loaded and checked in ENVI
-- Radiometric calibration completed
-- FLAASH atmospheric correction completed
-- Panchromatic and multispectral image fusion completed
-- Two-scene mosaic completed
-- Guangzhou study-area clipping completed
-- ROI samples prepared
-- ROI separability checked
-- Maximum Likelihood classification completed
-- Neural Net classification completed
-- SVM classification is in progress / to be supplemented
+- Opened and checked two Landsat 8 scenes in ENVI
+- Radiometric calibration
+- FLAASH atmospheric correction
+- Panchromatic and multispectral image fusion
+- Seamless mosaic of the two scenes
+- Guangzhou study-area clipping with boundary data
+- ROI sample selection
+- ROI separability check
+- Supervised classification experiments
 
-Current land-cover classes:
+Classification methods used / tested:
+
+- Maximum Likelihood
+- Neural Net
+- Support Vector Machine
+
+Final land-cover classes used in this lab:
 
 - Water
 - Vegetation
@@ -30,36 +34,41 @@ Current land-cover classes:
 
 ## Repository Contents
 
-The Git repository is kept lightweight. Large raster data files are not committed directly to Git.
+The main Git repository is kept small. Large raster data and compressed source images are not committed directly to Git.
 
-Recommended local files:
+Tracked files in the repository:
 
-- `workflow.md` - workflow notes
+- `README.md` - project overview and data notes
+- `.gitignore` - excludes large ENVI raster files and temporary outputs
+
+Local working files may include:
+
+- `workflow.md` - process notes
 - `guangzhou_landsat8_report.pdf` - stage report
-- `ScreenShot/` - processing screenshots
+- `ScreenShot/` - ENVI operation screenshots
+- `FinalData/` - local ENVI outputs and intermediate files
 
-Some of these local files may not be tracked in Git if they are only used as personal records.
+These local working files are mainly for personal record keeping and may not all be uploaded to the Git repository.
 
-## Data And Large Files
+## Data In Releases
 
-Large data packages are stored in **GitHub Releases**, not in the main Git repository.
+Large data files are stored in GitHub Releases instead of the main branch.
 
-Release assets may include:
+| Release | File | Description |
+| --- | --- | --- |
+| [Guangzhou_Shp](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Guangzhou_Shp) | `CantonShp.zip` | Guangzhou boundary shapefile used for study-area clipping |
+| [Landsats8_Data_122043](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Landsats8_Data_122043) | `LC81220432021019LGN00.zip` | Original Landsat 8 scene package, path/row 122/043 |
+| [Landsats8_Data_122044](https://github.com/Wukeeeeee/Guangzhou-landsat8-lab/releases/tag/Landsats8_Data_122044) | `LC81220442021019LGN00.zip` | Original Landsat 8 scene package, path/row 122/044 |
 
-- Original Landsat 8 scene packages
-- Guangzhou mosaic result package
-- Study-area clipping result package
-- Classification result packages
-
-Large ENVI intermediate files such as `.dat`, `.dat.enp`, rule images, and temporary outputs are excluded from Git tracking.
+Processed ENVI files such as `.dat`, `.hdr`, `.enp`, rule images, and temporary outputs are intentionally excluded from Git because they are too large for normal repository tracking.
 
 ## Notes
 
-This is a course / lab-style remote sensing workflow record. The current results still have limitations:
+This project is best understood as a personal learning archive for a GIS coursework / lab workflow. The classification result still has visible limitations:
 
-- Guangzhou has complex urban-rural mixed land cover.
-- Urban land, cropland, and bare land have similar spectral characteristics in some areas.
-- Landsat spatial resolution limits detailed land-cover separation.
-- Some classification outputs contain mixed pixels and salt-and-pepper noise.
+- Guangzhou contains complex urban-rural mixed land cover.
+- Urban land, cropland, and bare land can be spectrally similar in Landsat imagery.
+- Landsat spatial resolution makes detailed urban green space and mixed pixels hard to separate.
+- Some classification results may contain salt-and-pepper noise and need post-processing or accuracy assessment.
 
-Future improvements may include more refined ROI samples, post-classification filtering, accuracy assessment, and comparison of different classifiers.
+Future improvements could include refined ROI samples, post-classification filtering, confusion matrix accuracy assessment, and comparison between classifiers.
