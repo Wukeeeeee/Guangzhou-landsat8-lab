@@ -17,3 +17,6 @@ FinalData/
 ~$*.docx
 *.tmp
 *.bak
+
+# Course prompt / private assignment file
+assignment_requirements.docx
